@@ -12,9 +12,27 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let ballArray = [#imageLiteral(resourceName: "ball1.png"),#imageLiteral(resourceName: "ball2.png"),#imageLiteral(resourceName: "ball3.png"),#imageLiteral(resourceName: "ball4.png"),#imageLiteral(resourceName: "ball5.png")]
+    @IBOutlet weak var imageView: UIImageView!
+    
+    
+    let ballArray = [#imageLiteral(resourceName: "ball1"),#imageLiteral(resourceName: "ball2"),#imageLiteral(resourceName: "ball3"),#imageLiteral(resourceName: "ball4"),#imageLiteral(resourceName: "ball5")]
+    
+    var letzteZahl : Int = 99
 
 
-
+    
+    
+    @IBAction func askButtonPressed(_ sender: UIButton) {
+        
+        var zufall = Int.random(in: 0...4)
+        while letzteZahl == zufall {
+           zufall = Int.random(in: 0...4)
+        }
+        print(letzteZahl, zufall)
+        letzteZahl = zufall
+        
+        imageView.image = ballArray[zufall]
+       
+    }
 }
 
